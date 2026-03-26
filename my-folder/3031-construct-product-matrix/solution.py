@@ -4,7 +4,7 @@ class Solution:
         p =[[0]*m for _ in range(n)]
         mod= 12345
 
-        # prefix pass
+         # forward pass
 
         current_product=1
         for i in range(n):
@@ -12,7 +12,7 @@ class Solution:
                 p[i][j]=current_product
                 current_product =(current_product * grid[i][j]) % mod
 
-        # suffix pass
+        # backward pass
         current_product= 1
         for i in range(n-1,-1,-1):
             for j in range(m-1,-1,-1):
