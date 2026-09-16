@@ -1,24 +1,23 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-        # Step 1: Subhi symbols ki values ko Hash Map (Dictionary) mein store karo
-        roman_map = {
-            'I': 1,
-            'V': 5,
-            'X': 10,
-            'L': 50,
-            'C': 100,
-            'D': 500,
-            'M': 1000
+        values = {
+             'I' : 1,
+             'V' :5 ,
+             'X' :10 ,
+             'L': 50 ,
+             'C':100 ,
+             'D':500 ,
+             'M':1000 ,
         }
-        
-        total = 0
-        n = len(s)
-    
-        for i in range(n):
-            
-            if i + 1 < n and roman_map[s[i]] < roman_map[s[i + 1]]:
-                total -= roman_map[s[i]]
-            else:
-                total += roman_map[s[i]]
-                
-        return total
+        total = 0 
+        pre_val = 0
+
+        for ch in reversed(s):
+            curr_value = values[ch]
+
+            if curr_value <pre_val :
+                total -= curr_value
+            else :
+                total +=curr_value 
+            pre_val = curr_value 
+        return total 
